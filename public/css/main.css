@@ -156,11 +156,11 @@ body {
   overflow-y: auto;
   border-right: 1px solid var(--light-line);
   width: 240px;
-  height: 100vh;
+  height: calc(100% - 3.5em);
   background-color: var(--light);
   display: flex;
   flex-direction: column;
-  padding-bottom: 70px;
+  padding-bottom: 10px;
 }
 @media screen and (max-width: 1240px) {
   .navbar {
