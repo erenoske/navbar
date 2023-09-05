@@ -1,0 +1,205 @@
+@import"https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap";
+
+:root {
+  --light: #ffff;
+  --primary: #1976D2;
+  --light-primary: #CFE8FF;
+  --grey: #f3f6f9;
+  --dark-grey: #AAAAAA;
+  --dark: #363949;
+  --danger: #D32F2F;
+  --light-danger: #FECDD3;
+  --warning: #FBC02D;
+  --light-warning: #FFF2C6;
+  --success: #388E3C;
+  --light-success: #BBF7D0;
+  --dark-blue: #233446;
+  --light-line: #ecf1f6;
+  --dark-line: #233446;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+
+html {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+.bx {
+  font-size: 1.7rem;
+}
+
+a {
+ text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+body.dark{
+  --light: #181a1e;
+  --grey: #25252c;
+  --dark: #fbfbfb;
+  --light-line: #233446;
+  color: white;
+}
+
+body {
+  background: var(--light);
+  overflow-x: hidden;
+}
+.header {
+  position: fixed;
+  width: 100%;
+  height: 3.5em;
+  border-bottom: 1px solid var(--light-line);
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+  gap: 10px;
+
+  background: var(--light);
+}
+@media screen and (max-width: 960px) {
+  .header {
+    padding: 3px;
+  }
+}
+.main {
+  max-width: 100%;
+  margin: 3.5em auto;
+  height: 2000px;
+  padding: 10px;
+}
+@media screen and (max-width: 1240px){
+  .main {
+    margin: 3.5em 0;
+  }
+}
+.main-active {
+  margin-top: 3.5em;
+  margin-left: 240px;
+  padding: 10px;
+  height: 2000px;
+}
+@media screen and (max-width: 1240px){
+  .main-active {
+    margin: 3.5em 0;
+  }
+}
+.flex-items {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.user-image {
+  width: 32px;
+  height: 32px;
+  border-radius: 100%;
+}
+.search {
+  width: 100%;
+  max-width: 600px;
+}
+.flex-items-search {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  align-items: center;
+}
+@media screen and (max-width: 960px) {
+  .flex-items-search {
+    display: none;
+  }
+}
+.search-input {
+  width: 100%;
+  height: 40px;
+  background-color: var(--grey);
+  border-radius: 4px;
+  padding: 0 15px;
+  font-size: 16px;
+  font-weight: 500;
+  border: 1px solid var(--light-line);
+}
+.bx-bell {
+  position: relative;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 5px;
+}
+.bx-bell:hover {
+  background-color: var(--grey);
+  border-radius: 100%;
+}
+.bell-active::after {
+  content: "";
+  position: absolute;
+  right: 2px;
+  width: 8px;
+  height: 8px;
+  border-radius: 100%;
+  background-color: rgba(230, 45, 45, 0.849);
+}
+.navbar {
+  position: fixed;
+  padding: 5px 10px;
+  top: 3.5em;
+  left: 0%;
+  transition: left 0.3s ease;
+  overflow-x: hidden;
+  overflow-y: auto;
+  border-right: 1px solid var(--light-line);
+  width: 240px;
+  height: 100vh;
+  background-color: var(--light);
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 70px;
+}
+@media screen and (max-width: 1240px) {
+  .navbar {
+    left: -100%;
+  }
+}
+.grid-items {
+  display: grid;
+  gap: 5px;
+}
+.item {
+  padding: 10px;
+  color: currentColor;
+}
+.item:hover {
+  background-color: var(--grey);
+  border-radius: 4px;
+}
+.item-active {
+  background-color: var(--grey);
+  border-radius: 4px;
+}
+.bx-menu {
+  cursor: pointer;
+}
+h1 {
+  margin: 0 !important;
+}
+.mode {
+  margin-top: auto;
+}
+.theme-switcher {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  border-radius: 4px;
+  background-color: var(--grey);
+  cursor: pointer;
+  user-select: none;
+}
