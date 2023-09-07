@@ -8,6 +8,6 @@ Bu proje, kullanıcıların farklı cihazlarda ve ekran boyutlarında kolayca ge
 - Menü öğelerini özelleştirmek için kolayca özelleştirilebilir.
 - Animasyonlu geçişlerle daha etkileyici bir deneyim sunar.
 
-![Örnek Menü]([https://cdn.discordapp.com/attachments/1112823480505876526/1149335987814662174/image.png])
+![Menü Resmi](https://cdn.discordapp.com/attachments/1112823480505876526/1149335987814662174/image.png)
 
 
