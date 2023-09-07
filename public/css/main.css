@@ -5,7 +5,7 @@
   --primary: #1976D2;
   --light-primary: #CFE8FF;
   --grey: #f3f6f9;
-  --dark-grey: #AAAAAA;
+  --dark-grey: #dadee2;
   --dark: #363949;
   --danger: #D32F2F;
   --light-danger: #FECDD3;
@@ -16,12 +16,41 @@
   --dark-blue: #233446;
   --light-line: #ecf1f6;
   --dark-line: #233446;
+  --scroll-first: #ecf1f6;
+  --scroll-sec: #d4dfeb;
+  --scroll-third: #ecf1f6;
+  --text: #646464;
 }
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Montserrat",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+body.dark *::-webkit-scrollbar-corner {
+  background-color: #ecf1f6;
+}
+body.dark *::-webkit-scrollbar-thumb {
+  background-color: #353738;
+}
+body.dark *::-webkit-scrollbar-track {
+  background-color: #242526;
+}
+*::-webkit-scrollbar {
+  height: 4px;
+}
+*::-webkit-scrollbar {
+  width: 4px;
+  background-color: var(--scroll-first);
+}
+*::-webkit-scrollbar-corner {
+  background-color: var(--scroll-first);
+}
+*::-webkit-scrollbar-thumb {
+  background-color: var(--scroll-sec);
+}
+*::-webkit-scrollbar-track {
+  background-color: var(--scroll-third);
 }
 
 html {
@@ -44,14 +73,21 @@ li {
 body.dark{
   --light: #181a1e;
   --grey: #25252c;
-  --dark: #fbfbfb;
-  --light-line: #233446;
-  color: white;
+  --dark: rgb(197, 197, 197);
+  --light-line: #3e4144;
+  --dark-grey: #1c1c21;
+  --scroll-first: #ecf1f6;
+  --scroll-sec: #353738;
+  --scroll-third: #242526;
+  --white: #ffff;
+  --text: rgb(197, 197, 197);
+  color:  rgb(197, 197, 197);
 }
 
 body {
   background: var(--light);
   overflow-x: hidden;
+  color: #333;
 }
 .header {
   position: fixed;
@@ -84,7 +120,7 @@ body {
 .main-active {
   margin-top: 3.5em;
   margin-left: 240px;
-  padding: 10px;
+  padding: 10px; 
   height: 2000px;
 }
 @media screen and (max-width: 1240px){
@@ -96,6 +132,11 @@ body {
   display: flex;
   align-items: center;
   gap: 10px;
+}
+@media screen and (max-width: 960px) {
+  .flex-items > span {
+    display: none;
+  }
 }
 .user-image {
   width: 32px;
@@ -126,12 +167,25 @@ body {
   font-size: 16px;
   font-weight: 500;
   border: 1px solid var(--light-line);
+  color: var(--white);
 }
 .bx-bell {
   position: relative;
   font-size: 24px;
   cursor: pointer;
   padding: 5px;
+}
+.bx-search {
+  position: relative;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 5px;
+  display: none !important;
+}
+@media screen and (max-width: 960px) {
+  .bx-search {
+    display: inline-block !important;
+  }
 }
 .bx-bell:hover {
   background-color: var(--grey);
@@ -153,7 +207,7 @@ body {
   left: 0%;
   transition: left 0.3s ease;
   overflow-x: hidden;
-  overflow-y: auto;
+  overflow-y: hidden;
   border-right: 1px solid var(--light-line);
   width: 240px;
   height: calc(100% - 3.5em);
@@ -161,6 +215,10 @@ body {
   display: flex;
   flex-direction: column;
   padding-bottom: 10px;
+  z-index: 999;
+}
+.navbar:hover {
+  overflow-y: auto;
 }
 @media screen and (max-width: 1240px) {
   .navbar {
@@ -170,16 +228,23 @@ body {
 .grid-items {
   display: grid;
   gap: 5px;
+  padding-bottom: 10px;
 }
 .item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   padding: 10px;
   color: currentColor;
+  font-weight: 500;
+  font-size: 15px;
 }
 .item:hover {
   background-color: var(--grey);
   border-radius: 4px;
 }
 .item-active {
+  position: relative;
   background-color: var(--grey);
   border-radius: 4px;
 }
@@ -202,4 +267,181 @@ h1 {
   background-color: var(--grey);
   cursor: pointer;
   user-select: none;
+}
+.layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: space-between;
+}
+.collum-first {
+  width: calc(70% - 5px);
+}
+.collum-seccond {
+  width: calc(30% - 5px);
+}
+@media screen and (max-width: 1240px) {
+  .collum-first {
+    width: 100%;
+  }
+  .collum-seccond {
+    width: 100%;
+  }
+}
+.flex-cont {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+button {
+  cursor: pointer;
+  border: 1px solid var(--light-line);
+  border-radius: 4px;
+  padding: 0 15px;
+  font-size: 16px;
+  font-weight: 500;
+  background-color: var(--grey);
+  color: var(--white);
+}
+button:hover {
+  background-color: var(--dark-grey);
+}
+.f-sub {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border: 1px solid var(--light-line);
+  border-radius: 4px;
+  background-color: var(--grey);
+  margin-bottom: 10px;
+}
+.bx-down-arrow {
+  font-size: 20px;
+}
+h1 {
+  font-size: 1.5em !important;
+}
+h2 {
+  font-size: 1.2em !important;
+}
+h3 {
+  font-size: 1em !important;
+  font-weight: 500 !important;
+}
+a {
+  color: currentColor;
+}
+p {
+  color: var(--text);
+  font-weight: 500;
+  font-size: 0.8em !important;
+  line-height: 1.4;
+}
+.grid-form {
+  display: grid;
+  gap: 10px;
+  padding: 5px 5px;
+  border: 1px solid var(--light-line);
+  border-radius: 4px;
+}
+.flex-cont-form {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 5px 10px;
+}
+.flex-cont-form:hover {
+  background-color: var(--grey);
+  border-radius: 4px;
+}
+.items-form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+@media screen  and (max-width: 940px){
+  .form-active {
+    display: none;
+  }
+}
+.box {
+  display: grid;
+  gap: 10px;
+  border: 1px solid var(--light-line);
+  border-radius: 4px;
+  padding: 10px 15px;
+  justify-content: center;
+}
+.box > p {
+  text-align: center;
+}
+.flex-cont-discord {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.play {
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+}
+.signal-active {
+  color: #388E3C !important;
+}
+.menu-icon {
+  font-size: 20px;
+}
+.line {
+  border-bottom: 1px solid var(--light-line);
+}
+.m-t {
+  margin-top: -2px;
+}
+.item-active::before {
+  content: "";
+  position: absolute;
+  right: -10px;
+  width: 3.5px;
+  height: 100%;
+  background-color: var(--dark);
+  border-radius: 4px 0 0 4px;
+}
+.f-l {
+  float: right;
+}
+.f-box-2 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 250px;
+}
+@media screen and (max-width: 940px) {
+  .f-box-2 {
+    display: none;
+  }
+}
+.pointer {
+  cursor: pointer;
+  user-select: none;
+}
+.overflow {
+  overflow-y: auto;
+}
+.overflow-h {
+  overflow-y: hidden;
+}
+.navbar-m {
+  background-color: #040404a6;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  display: none;
+}
+.m-active {
+  display: block !important;
 }
