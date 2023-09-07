@@ -50,6 +50,7 @@ var isKontrolEdildiSec = false; // Bayrak başlangıçta false olarak ayarlanır
 function kontrolEt() {
   var element = document.querySelector('.navbar'); // Elementinizi uygun bir şekilde seçin
   var genislik = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+  const htmlElement = document.querySelector("html");
 
   if (genislik < 1240 && !isKontrolEdildi) {
     element.style.left = '-100%';
@@ -64,6 +65,9 @@ function kontrolEt() {
     main.classList.remove("main");
     main.classList.add("main-active");
     navbarM.classList.remove("m-active");
+    if(htmlElement.classList == 'overflow-h') {
+      htmlElement.classList.remove("overflow-h");
+    }
   }
 }
 
@@ -107,26 +111,6 @@ document.addEventListener("click", function(event) {
     scrolled = false; // Her dokunuş öncesi kaydırma işlemi sıfırlanır
 });
 
-navbar.addEventListener("touchmove", function(event) {
-    if (scrolled) {
-        return; // Eğer zaten kaydırma işlemi yapıldıysa, işlemi tekrarlamayı önle
-    }
-
-    // Mevcut dokunuşun x koordinatını düzelt
-    var currentX = event.touches[0].clientX - startX;
-    const navbarM = document.querySelector('.navbar-m');
-    const htmlElement = document.querySelector("html");
-
-    // Sola doğru kaydırma miktarını hesapla
-    if (currentX < -100) {
-        navbar.style.left = '-100%'; // Navbar'ı ekranın soluna taşı
-        main.classList.remove("main-active");
-        main.classList.add("main");
-        navbarM.classList.remove("m-active");
-        htmlElement.classList.remove("overflow-h");
-        scrolled = true; // Kaydırma işlemi yapıldı olarak işaretle
-    }
-});
 
 navbar.addEventListener('touchstart', function() {
   navbar.classList.add('overflow');
@@ -152,3 +136,47 @@ divElement.addEventListener("click", function() {
       pElement.innerHTML = "Açık mod.";
     }
 });  
+
+   // Ekranın en solundan 50 piksel uzaklıkta bir bölgeyi seçin
+   const solBolge = document.documentElement;
+   let startX; // Kaydırma başlangıcı x koordinatı
+
+   // Kaydırma başlangıcı olayını dinle
+   solBolge.addEventListener('touchstart', function(event) {
+     startX = event.touches[0].clientX; // Kaydırma başlangıcı x koordinatı
+   });
+
+   // Kaydırma hareketini dinle
+   solBolge.addEventListener('touchmove', function(event) {
+     const currentX = event.touches[0].clientX; // Şu anki x koordinatı
+     const htmlElement = document.querySelector("html");
+
+     // Sağa doğru kaydırma algılandığını kontrol et
+     if (currentX - startX > 120) {
+      navbar.style.left = '0px'; // Navbar'ı ekranın soluna taşı
+      main.classList.add("main-active");
+      main.classList.remove("main");
+      navbarM.classList.add("m-active");
+      htmlElement.classList.add("overflow-h");
+      scrolled = true; // Kaydırma işlemi yapıldı olarak işaretle
+     }
+   });
+
+   solBolge.addEventListener('touchstart', function(event) {
+     startX = event.touches[0].clientX;
+   });
+
+   
+   solBolge.addEventListener('touchmove', function(event) {
+     const currentX = event.touches[0].clientX;
+     const navbarM = document.querySelector('.navbar-m');
+     const htmlElement = document.querySelector("html");
+     // Soldan sağa doğru kaydırma algılandığını kontrol et
+     if (startX - currentX > 120) {
+      navbar.style.left = '-100%'; // Navbar'ı ekranın soluna taşı
+      main.classList.remove("main-active");
+      main.classList.add("main");
+      navbarM.classList.remove("m-active");
+      htmlElement.classList.remove("overflow-h");
+     }
+   });

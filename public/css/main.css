@@ -182,6 +182,10 @@ body {
   padding: 5px;
   display: none !important;
 }
+.bx-search:hover {
+  background-color: var(--grey);
+  border-radius: 100%;
+}
 @media screen and (max-width: 960px) {
   .bx-search {
     display: inline-block !important;
